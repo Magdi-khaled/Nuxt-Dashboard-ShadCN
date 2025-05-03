@@ -4,6 +4,6 @@
 
 <template>
     <div>
-        Main Page
+        hello from transictions page
     </div>
 </template>

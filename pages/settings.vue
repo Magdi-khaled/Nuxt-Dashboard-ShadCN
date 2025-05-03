@@ -4,6 +4,6 @@
 
 <template>
     <div>
-        Main Page
+        hello from settings page
     </div>
 </template>

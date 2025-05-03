@@ -4,6 +4,6 @@
 
 <template>
     <div>
-        Main Page
+        hello from account page
     </div>
 </template>

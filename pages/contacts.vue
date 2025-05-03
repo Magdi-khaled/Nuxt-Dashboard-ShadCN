@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div>
-        Main Page
-    </div>
+  <div>
+    hello from contacts page
+  </div>
 </template>

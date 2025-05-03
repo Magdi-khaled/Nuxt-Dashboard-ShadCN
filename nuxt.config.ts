@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/tailwind.css"],
   vite: { plugins: [tailwindcss()] },
-  modules: ["shadcn-nuxt"],
+  modules: ["shadcn-nuxt", "@nuxt/icon"],
   shadcn: {
     /**
      * Prefix for all the imported component

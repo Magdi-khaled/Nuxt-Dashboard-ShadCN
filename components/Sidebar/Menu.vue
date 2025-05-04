@@ -9,10 +9,10 @@ const items = ref([
 </script>
 
 <template>
-    <div class="overflow-hidden">
+    <div class="w-full overflow-hidden">
         <header class="cursor-pointer w-fit flex items-center gap-2 p-4 transform hover:scale-[101%] transition">
             <Logo />
-            <p class="font-bold capitalize">nuxt-finance</p>
+            <p class="font-bold capitalize text-black">nuxt-finance</p>
         </header>
         <nav class="pl-4 grow">
             <ul class="grid gap-2">
@@ -23,5 +23,8 @@ const items = ref([
                 </NuxtLink>
             </ul>
         </nav>
+        <footer class="p-4">
+            @copyright 2025
+        </footer>
     </div>
 </template>

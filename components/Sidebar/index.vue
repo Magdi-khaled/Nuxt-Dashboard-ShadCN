@@ -16,12 +16,10 @@ const open = ref(false);
                 </div>
             </transition>
         </div>
-        <div class="hidden lg:flex h-screen border-r">
+        <div class="w-[250px] hidden lg:flex h-screen border-r">
             <SidebarMenu />
         </div>
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -5,8 +5,13 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   css: ["~/assets/css/tailwind.css"],
-  vite: { plugins: [tailwindcss()] },
-  modules: ["shadcn-nuxt", "@nuxt/icon"],
+  vite: {
+    plugins: [tailwindcss()],
+    esbuild: {
+      loader: "ts",
+    },
+  },
+  modules: ["shadcn-nuxt", "@nuxt/icon", "nuxt-highcharts"],
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -18,4 +23,5 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
+  ssr: false,
 });

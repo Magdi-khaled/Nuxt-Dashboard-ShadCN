@@ -1,14 +1,44 @@
 <script setup>
 const props = defineProps(['currentCategory', 'data']);
 let currentCategory = props.currentCategory || 'today';
-
 let categories = ref({
     today: [
         "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00",
         "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
     week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    month: [],
+    year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 });
+
+const generateMonth = () => {
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth() + 1;
+    let currentYear = currentDate.getFullYear();
+
+    function generateMonthDates() {
+        let monthDates = [];
+        let daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
+        console.log(daysInMonth);
+        for (let i = 1; i <= daysInMonth; i++) {
+            let dayString = ("0" + i).slice(-2);
+            let monthString = ("0" + currentMonth).slice(-2);
+            monthDates.push(monthString + "/" + dayString);
+        }
+        console.log(monthDates);
+        return monthDates;
+    }
+    let month = generateMonthDates();
+    categories.value = { ...categories.value, month };
+    return month;
+};
+watch(() => props.currentCategory, (newVal) => { console.log(newVal); })
+const chartCategories = computed(() => {
+    if (props.currentCategory === 'today') return categories.value.today;
+    else if (props.currentCategory === 'week') return categories.value.week;
+    else if (props.currentCategory === 'month') return categories.value.month;
+    return categories.value.year;
+});
+
 const colorMode = useColorMode();
 
 let options = computed(() => ({
@@ -19,7 +49,7 @@ let options = computed(() => ({
     subtitle: { text: '' },
     xAxis: {
         gridLineColor: 'transparent',
-        categories: currentCategory
+        categories: chartCategories.value,
     },
     yAxis: {
         gridLineColor: 'transparent',
@@ -51,30 +81,11 @@ let options = computed(() => ({
     }
 }));
 
-const generateMonth = () => {
-    let currentDate = new Date();
-    let currentMonth = currentDate.getMonth() + 1;
-    let currentYear = currentDate.getFullYear();
 
-    function generateMonthDates() {
-        let monthDates = [];
-        let daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
-
-        for (let i = 1; i <= daysInMonth; i++) {
-            let dayString = ("0" + i).slice(-2);
-            let monthString = ("0" + currentMonth).slice(-2);
-            monthDates.push(monthString + "/" + dayString);
-        }
-        return monthDates;
-    }
-    let month = generateMonthDates();
-    categories = ({ ...categories, month })
-    return month;
-}
 
 onMounted(() => {
     generateMonth();
-})
+});
 </script>
 
 <template>

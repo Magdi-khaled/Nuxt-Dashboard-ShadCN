@@ -45,15 +45,11 @@ const setCategory = (e: any) => {
     let v = e.target.innerText.toLowerCase();
     currentCategory.value = v;
     if (v === 'today') generateRandomValue(24);
-    if (v === 'week') generateRandomValue(7);
-    if (v === 'month') generateRandomValue(31);
-    if (v === 'year') generateRandomValue(12);
+    if (v === 'week') generateRandomValue(6);
+    if (v === 'month') generateRandomValue(30);
+    if (v === 'year') generateRandomValue(11);
 };
 
-watch(currentCategory, () => {
-    console.log(currentCategory.value);
-    console.log(data.value);
-});
 onMounted(() => generateRandomValue(24));
 </script>
 

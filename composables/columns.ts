@@ -13,7 +13,9 @@ export const columns: IColumn[] = [
           class: "flex items-center gap-2 active:shadow-none",
           variant: "ghost",
         },
-        ["Email", h(ArrowUpDown, { class: "h-4 w-4" })]
+        {
+          default: () => ["Email", h(ArrowUpDown, { class: "h-4 w-4" })],
+        }
       ),
     cell: ({ row }) => row.getValue("email"),
   },

@@ -22,13 +22,8 @@ export default defineNuxtConfig({
     "nuxt-highcharts",
     "@nuxtjs/color-mode",
   ],
-  colorMode: {
-    classSuffix: "", // so the class will be just "dark"
-  },
+  colorMode: { classSuffix: "" },
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: "",
     /**
      * Directory that the component lives in.
@@ -36,4 +31,5 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
+  ssr: false,
 });

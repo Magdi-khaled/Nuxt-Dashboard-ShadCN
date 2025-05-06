@@ -31,7 +31,8 @@ const generateMonth = () => {
     categories.value = { ...categories.value, month };
     return month;
 };
-watch(() => props.currentCategory, (newVal) => { console.log(newVal); })
+watch(() => props.currentCategory, (newVal) => { console.log(newVal); });
+
 const chartCategories = computed(() => {
     if (props.currentCategory === 'today') return categories.value.today;
     else if (props.currentCategory === 'week') return categories.value.week;

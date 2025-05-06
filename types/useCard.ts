@@ -1,4 +1,4 @@
-export interface ICard {
+export default interface ICard {
   title: string;
   progression: number;
   amount: number;

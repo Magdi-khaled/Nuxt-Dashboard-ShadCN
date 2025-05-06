@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import type ICard from '~/types/useCard';
 
 const { loading, open } = useHelper();
-const tabs = ref([
-    { value: 'Today', compenent: 'today' },
-    { value: 'Week', compenent: 'this week' },
-    { value: 'Month', compenent: 'this month' },
-    { value: 'Year', compenent: 'this year' },
-]);
+const tabs = ref(['Today', 'Week', 'Month', 'Year']);
 let currentCategory = ref("today");
 let data = ref<number[]>([]);
 
@@ -36,57 +32,55 @@ const cards: ICard[] = [
         description: "Payouts of this week",
         icon: "tabler:zoom-money"
     }
-]
-
-const generateRandomValue = (number = 7) => {
+];
+const generateRandomValue = (number = 7): void => {
     let values = [];
     for (let j = 0; j < number + 1; j++) {
         values.push(Math.floor(Math.random() * 100));
     }
     data.value = values;
-    return values;
-}
+};
 
 const setCategory = (e: any) => {
     let v = e.target.innerText.toLowerCase();
-    currentCategory.value = v
+    currentCategory.value = v;
     if (v === 'today') generateRandomValue(24);
     if (v === 'week') generateRandomValue(7);
     if (v === 'month') generateRandomValue(31);
-    if (v === 'year') generateRandomValue(365);
-}
+    if (v === 'year') generateRandomValue(12);
+};
 
-onMounted(() => generateRandomValue(24))
+watch(currentCategory, () => {
+    console.log(currentCategory.value);
+    console.log(data.value);
+});
+onMounted(() => generateRandomValue(24));
 </script>
 
 <template>
     <div class="grid w-full gap-4">
-        <header class="w-full flex items-center justify-between">
-            <div class="">
-                <p class="capitalize">hi, welcome back Magdi !</p>
-                <h1>Dashboard</h1>
+        <header class="w-full flex items-start justify-between">
+            <div class="grid grid-cols-2 items-center gap-2">
+                <p class="capitalize col-span-2">hi, welcome back Magdi !</p>
+                <h1 class="">Dashboard</h1>
             </div>
             <ProductNew />
-            <!-- <div class="h-10">
-                <Button class="capitalize" @click="open = true">add new product</Button>
-            </div> -->
         </header>
-        <main class="grid gap-4 w-full">
-            <Tabs default-value="Today" @click="setCategory" class="w-full">
+        <main class="grid w-full gap-4">
+            <Tabs default-value="Today" class="w-full">
                 <TabsList class="max-w-[400px]">
-                    <TabsTrigger v-for="(item, index) in tabs" :key="index" :value="item.value">
-                        {{ item.value }}
+                    <TabsTrigger v-for="item, index in tabs" :key="index" :value="item" @click="setCategory">
+                        {{ item }}
                     </TabsTrigger>
                 </TabsList>
-                <TabsContent v-for="(item, index) in tabs" :key="index" :value="item.value" class="w-full">
-                    <!-- <Chart v-if="data.length > 0" :currentCategory="currentCategory" :data="data" /> -->
+                <TabsContent class="w-[100%]" v-for="item, index in tabs" :key="index" :value="item">
                     <Chart v-if="data.length > 0" :currentCategory="currentCategory" :data="data" />
                 </TabsContent>
             </Tabs>
         </main>
         <footer>
-            <div class="grid gap-4 lg:grid-cols-3 h-[300px]">
-                <DCard v-for="(item, index) in cards" :key="index" :card="item" />
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <DCard v-for='(item, index) in cards' :card="item" :key='index' />
             </div>
         </footer>
     </div>

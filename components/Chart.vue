@@ -1,7 +1,5 @@
 <script setup>
-
-let props = defineProps(['currentCategory', 'data']);
-let data = props.data || [];
+const props = defineProps(['currentCategory', 'data']);
 let currentCategory = props.currentCategory || 'today';
 
 let categories = ref({
@@ -11,9 +9,12 @@ let categories = ref({
     week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 });
+const colorMode = useColorMode();
 
 let options = computed(() => ({
-    chart: { type: 'line' },
+    chart: {
+        type: 'line', backgroundColor: colorMode.value === 'dark' ? '' : '#ffffff',
+    },
     title: { text: '' },
     subtitle: { text: '' },
     xAxis: {
@@ -22,9 +23,7 @@ let options = computed(() => ({
     },
     yAxis: {
         gridLineColor: 'transparent',
-        title: {
-            text: ''
-        }
+        title: { text: '' }
     },
     plotOptions: {
         line: {
@@ -45,7 +44,7 @@ let options = computed(() => ({
                 [1, 'rgba(29,217,93,1)'],
             ]
         },
-        data
+        data: props.data
     }],
     accessibility: {
         enabled: false

@@ -24,6 +24,9 @@ export default defineNuxtConfig({
   ],
   colorMode: { classSuffix: "" },
   shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
     prefix: "",
     /**
      * Directory that the component lives in.
@@ -31,8 +34,5 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
-  ssr: true,
-  nitro: {
-    preset: "netlify",
-  },
+  ssr: false,
 });

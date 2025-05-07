@@ -34,4 +34,6 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
+  ssr: true,
+  nitro: { preset: "netlify" },
 });

@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/tailwind.css"],
   app: {
     head: {
+      title: "Interactive Dashboard",
       link: [{ rel: "icon", type: "image/x-icon", href: "/logo.png" }],
     },
   },

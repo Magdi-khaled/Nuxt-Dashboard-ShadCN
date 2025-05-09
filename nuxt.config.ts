@@ -1,0 +1,40 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineNuxtConfig({
+  compatibilityDate: "2024-11-01",
+  devtools: { enabled: true },
+  css: ["~/assets/css/tailwind.css"],
+  app: {
+    head: {
+      title: "Interactive Dashboard",
+      link: [{ rel: "icon", type: "image/x-icon", href: "/logo.png" }],
+    },
+  },
+  vite: {
+    plugins: [tailwindcss()],
+    esbuild: {
+      loader: "ts",
+    },
+  },
+  modules: [
+    "shadcn-nuxt",
+    "@nuxt/icon",
+    // "nuxt-highcharts",
+    "@nuxtjs/color-mode",
+    // "@nuxtjs/tailwindcss",
+  ],
+  colorMode: { classSuffix: "" },
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: "",
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: "./components/ui",
+  },
+  ssr: true,
+});

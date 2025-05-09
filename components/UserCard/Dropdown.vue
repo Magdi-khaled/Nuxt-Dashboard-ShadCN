@@ -3,18 +3,20 @@ defineProps<{ show: Boolean }>();
 const items = ref([
     { label: 'account', path: '/account', icon: 'lucide:bolt' },
     { label: 'logout', path: '/login', icon: 'hugeicons:logout-04' },
-])
+]);
+
 </script>
 
 <template>
-    <div v-show="show" class="border rounded-sm absolute z-10 w-full h-fit right-[4%] bottom-[-220%] bg-white dark:bg-background after:absolute after:size-3 after:transform after:rotate-44
-        after:top-[-9%] after:right-[5%] after:z-[-1] after:bg-white dark:after:bg-background after:border-[1px] after:border-b-transparent
-        after:border-r-transparent after:border-neutral-300">
+    <div v-show="show"
+        class="w-[200px] border border-neutral-400 rounded-sm overflow-hidden absolute z-10 h-fit right-[0%] bottom-[-200%] bg-white dark:bg-background">
         <ul class="grid items-start">
-            <li v-for="(item, index) in items" :key="index"
-                class="p-2 cursor-pointer capitalize flex items-center gap-2 font-medium hover:bg-neutral-100 hover:dark:bg-neutral-800 border-b">
-                <Icon :name="item.icon" size="20" class="text-blend-darken" />
-                {{ item.label }}
+            <li v-for="(item, index) in items" :key="index">
+                <NuxtLink :to="item.path" class="text-sm sm:text-[16px] flex items-center gap-2 p-2 cursor-pointer capitalize font-medium hover:bg-neutral-100
+                    hover:dark:bg-neutral-800 border-b">
+                    <Icon :name="item.icon" size="18" class="text-blend-darken" />
+                    {{ item.label }}
+                </NuxtLink>
             </li>
         </ul>
     </div>

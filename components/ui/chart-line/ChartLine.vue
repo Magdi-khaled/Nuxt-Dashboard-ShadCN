@@ -21,11 +21,9 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="rounded-lg border p-4 shadow-sm bg-white dark:bg-background">
-        <div v-if="title" class="mb-4 text-lg font-semibold">
-            {{ title }}
-        </div>
-        <div class="h-[300px]">
+    <div class="rounded-lg border p-4 shadow-xs bg-white dark:bg-background">
+        <ChartHeader :title="props.title" />
+        <div class="h-[260px]">
             <Line :data="chartData" :options="chartOptions" />
         </div>
     </div>

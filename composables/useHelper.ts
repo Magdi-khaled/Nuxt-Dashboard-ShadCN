@@ -26,9 +26,18 @@ export default function useHelper() {
     return randomData;
   };
 
+  const generateRandomValue = (number = 7): number[] => {
+    let values = [];
+    for (let j = 0; j < number + 1; j++) {
+      values.push(Math.floor(Math.random() * 100));
+    }
+    return values;
+  };
+
   return {
     open,
     loading,
     generateRandomData,
+    generateRandomValue,
   };
 }

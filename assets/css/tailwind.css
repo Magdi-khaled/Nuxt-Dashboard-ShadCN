@@ -119,13 +119,12 @@
   }
   body {
     @apply bg-background text-neutral-900 dark:bg-background dark:text-primary font-[assistant];
-    /* @apply bg-background text-foreground; */
   }
   h1 {
-    @apply text-[36px] font-[400] dark:text-neutral-100;
+    @apply text-[20px] md:text-[24px] lg:text-[36px] font-[400] dark:text-neutral-100;
   }
   p {
-    @apply text-neutral-600 dark:text-neutral-100;
+    @apply text-sm sm:text-[14px];
   }
   ::selection {
     @apply bg-primary text-primary-foreground;
@@ -133,6 +132,9 @@
 }
 
 @layer {
+  .shadow-top {
+    box-shadow: #949494 0px 2px 2px 2px;
+  }
   .fade-enter-from,
   .fade-leave-to {
     opacity: 0;
@@ -148,14 +150,5 @@
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 0.3s, transform 0.3s;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }

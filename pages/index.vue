@@ -1,44 +1,9 @@
 <script setup lang="ts">
-import type ICard from '~/types/useCard';
+const { generateRandomValue } = useHelper();
+const isClicked = ref<number>(0);
+const orderData = computed<number[]>(() => generateRandomValue(12));
+const revenueData = computed<number[]>(() => generateRandomValue(12));
 
-const { loading, open } = useHelper();
-let data = ref<number[]>([]);
-
-const cards: ICard[] = [
-    {
-        title: "Sales",
-        progression: 12,
-        amount: 1244.43,
-        label: "View sales",
-        description: "Sales of March 2024",
-        icon: "solar:ticket-sale-outline"
-    },
-    {
-        title: "Refunds",
-        progression: 8,
-        amount: 84.44,
-        label: "View refunds",
-        description: "Refunds since beginning of year",
-        icon: "heroicons-outline:receipt-refund"
-    },
-    {
-        title: "Payouts",
-        progression: 14,
-        amount: 899.99,
-        label: "View payouts",
-        description: "Payouts of this week",
-        icon: "tabler:zoom-money"
-    }
-];
-const generateRandomValue = (number = 7): void => {
-    let values = [];
-    for (let j = 0; j < number + 1; j++) {
-        values.push(Math.floor(Math.random() * 100));
-    }
-    data.value = values;
-};
-
-onMounted(() => generateRandomValue(12));
 </script>
 
 <template>
@@ -46,18 +11,20 @@ onMounted(() => generateRandomValue(12));
         <header class="w-full flex items-start justify-between">
             <div>
                 <h1>Welcome back, <span class="font-semibold">Magdi !</span></h1>
-                <p class="capitalize">here's your current sales overview</p>
+                <p class="capitalize text-neutral-600 dark:text-neutral-100">here's your current sales overview</p>
             </div>
             <UserCard />
-            <!-- <ProductNew /> -->
         </header>
-        <main class="grid w-full gap-4">
-            <Chart v-if="data.length > 0" :data="data" />
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <DCard v-for='(item, index) in cards' :card="item" :key='index' />
+        <main class="grid w-full gap-6">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <CardDashboard v-for='(item, index) in cards' :card="item" :key='index' @click="isClicked = index"
+                    :class="{ 'bg-[#1e1e1e] dark:bg-neutral-800 text-primary-foreground dark:text-primary': isClicked === index }" />
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <Chart v-if="orderData.length > 0 && revenueData.length > 0" :orders-data="orderData"
+                    :revenue-data="revenueData" />
+                <!-- <Chart v-if="data.length > 0" :data="data" /> -->
             </div>
         </main>
-        <!-- <footer>
-        </footer> -->
     </div>
 </template>

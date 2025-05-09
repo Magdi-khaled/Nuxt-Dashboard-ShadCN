@@ -10,12 +10,11 @@ onMounted(() => isMounted.value = true);
 </script>
 
 <template>
-    <Button variant="ghost" @click="toggleTheme"
-        class="w-fit cursor-pointer p-[6px] rounded-full border active:shadow-none active:scale-[100%]">
+    <div @click="toggleTheme" class="cursor-pointer active:shadow-none active:scale-[100%]">
         <span v-if="isMounted">
             <Icon
                 :name="colorMode.value === 'dark' ? 'material-symbols:light-mode-outline-rounded' : 'material-symbols:dark-mode-outline-rounded'"
-                size="21" />
+                size="26" />
         </span>
-    </Button>
+    </div>
 </template>

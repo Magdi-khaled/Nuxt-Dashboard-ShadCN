@@ -1,5 +1,7 @@
 <template>
     <div class="w-[45px] h-[45px]">
-        <img src="@/assets/media/logo.png" alt="Dashboard Logo">
+        <nuxt-link to="/">
+            <img src="@/assets/media/logo.png" class="dark:invert-100" alt="Dashboard Logo">
+        </nuxt-link>
     </div>
 </template>

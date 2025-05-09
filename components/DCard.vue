@@ -7,10 +7,10 @@ const props = defineProps<{ card: ICard }>();
 
 <template>
     <Card v-if="props.card">
-        <CardHeader class="px-4 py-2">
+        <CardHeader class="px-4">
             <div class="flex items-center justify-between">
                 <CardTitle>{{ props.card?.title }}</CardTitle>
-                <Badge class="bg-green-400">+{{ props.card?.progression }}%</Badge>
+                <Badge class="bg-blend-darken">+{{ props.card?.progression }}%</Badge>
             </div>
         </CardHeader>
         <CardContent class="flex items-center justify-end px-4 pt-0 pb-2 border-b">

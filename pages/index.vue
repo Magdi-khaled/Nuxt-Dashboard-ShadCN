@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import type ICard from '~/types/useCard';
 
 const { loading, open } = useHelper();
-const tabs = ref(['Today', 'Week', 'Month', 'Year']);
-let currentCategory = ref("today");
 let data = ref<number[]>([]);
 
 const cards: ICard[] = [
@@ -41,20 +38,21 @@ const generateRandomValue = (number = 7): void => {
     data.value = values;
 };
 
-onMounted(() => generateRandomValue(24));
+onMounted(() => generateRandomValue(12));
 </script>
 
 <template>
     <div class="grid w-full gap-4">
         <header class="w-full flex items-start justify-between">
-            <div class="grid grid-cols-2 items-center gap-2">
-                <p class="capitalize col-span-2">hi, welcome back Magdi !</p>
-                <h1 class="">Dashboard</h1>
+            <div>
+                <h1>Welcome back, <span class="font-semibold">Magdi !</span></h1>
+                <p class="capitalize">here's your current sales overview</p>
             </div>
-            <ProductNew />
+            <UserCard />
+            <!-- <ProductNew /> -->
         </header>
         <main class="grid w-full gap-4">
-            <Chart v-if="data.length > 0" :currentCategory="currentCategory" :data="data" />
+            <Chart v-if="data.length > 0" :data="data" />
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 <DCard v-for='(item, index) in cards' :card="item" :key='index' />
             </div>

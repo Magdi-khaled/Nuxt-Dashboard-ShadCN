@@ -1,37 +1,14 @@
 <script setup>
-const props = defineProps(['currentCategory', 'data']);
+const props = defineProps(['data']);
 
-let categories = ref({
-    today: [
-        "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00",
-        "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
-    week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    month: [],
-    year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-});
-
-const generateMonth = () => {
-    let currentDate = new Date();
-    let currentMonth = currentDate.getMonth() + 1;
-    let currentYear = currentDate.getFullYear();
-
-    function generateMonthDates() {
-        let monthDates = [];
-        let daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
-        console.log(daysInMonth);
-        for (let i = 1; i <= daysInMonth; i++) {
-            let dayString = ("0" + i).slice(-2);
-            let monthString = ("0" + currentMonth).slice(-2);
-            monthDates.push(monthString + "/" + dayString);
-        }
-        console.log(monthDates);
-        return monthDates;
-    }
-    let month = generateMonthDates();
-    categories.value = { ...categories.value, month };
-    return month;
-};
-watch(() => props.currentCategory, (newVal) => { console.log(newVal); });
+// const categories = ref({
+//     today: [
+//         "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00",
+//         "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
+//     week: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+//     month: [],
+//     year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+// });
 
 const colorMode = useColorMode();
 
@@ -44,9 +21,10 @@ const data = {
             backgroundColor: colorMode.preference === 'dark' ? '#fff' : '#1e1e1e',
             width: '8px',
             borderColor: colorMode.preference === 'dark' ? "#fafafa" : '#1e1e1e',
-            data: [120, 90, 200, 250, 220, 179, 150, 180, 150, 280, 150, 180],
+            // data: [120, 90, 200, 250, 220, 179, 150, 180, 150, 280, 150, 180],
+            data: props.data,
             fill: false,
-            tension: 0.4,
+            tension: 0.5,
         },
     ],
 };
@@ -63,10 +41,16 @@ const chartOptions = {
     },
     scales: {
         y: {
+            grid: {
+                display: false,
+            },
             display: true,
             beginAtZero: true,
         },
         x: {
+            grid: {
+                display: false,
+            },
             display: true,
         },
     },
@@ -80,9 +64,6 @@ const chartOptions = {
         },
     },
 };
-onMounted(() => {
-    generateMonth();
-});
 </script>
 
 <template>

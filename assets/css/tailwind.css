@@ -118,11 +118,11 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-neutral-900 dark:bg-background dark:text-neutral-100 font-[assistant];
+    @apply bg-background text-neutral-900 dark:bg-background dark:text-primary font-[assistant];
     /* @apply bg-background text-foreground; */
   }
   h1 {
-    @apply text-[36px] font-[700] dark:text-neutral-100;
+    @apply text-[36px] font-[400] dark:text-neutral-100;
   }
   p {
     @apply text-neutral-600 dark:text-neutral-100;

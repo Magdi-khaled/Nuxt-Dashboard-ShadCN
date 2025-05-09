@@ -1,75 +1,45 @@
-# Nuxt Minimal Starter
+# 🛒 Interactive E-commerce Seller Dashboard
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+- An intuitive and interactive seller dashboard built for e-commerce platforms, empowering vendors to manage sales, track orders, monitor performance metrics, and gain valuable insights in real-time.
 
-## Setup
+## 🚀 Features
 
-Make sure to install dependencies:
+- 📈 Sales Analytics – Visualize revenue, order trends, and top-performing products.
 
-```bash
-# npm
-npm install
+- 📦 Order Management – View and update order statuses with live data updates.
 
-# pnpm
-pnpm install
+- 🧑‍💼 Customer Insights – Monitor customer activity, feedback, and retention stats.
 
-# yarn
-yarn install
+- 🛍️ Product Overview – Track stock levels, pricing, and product popularity.
 
-# bun
-bun install
-```
+- 🎨 Modern UI/UX – Responsive, clean design built with Tailwind CSS and Vue 3.
 
-## Development Server
+- 🌙 Dark Mode – Theme toggle for light and dark viewing preferences.
 
-Start the development server on `http://localhost:3000`:
+- ⚙️ Interactive Charts – Data visualizations powered by chart.js via vue-chartjs.
 
-```bash
-# npm
-npm run dev
+### 🛠️ Built With
 
-# pnpm
-pnpm dev
+- **Nuxt 3** – Vue-powered framework with server-side rendering (SSR) support.
 
-# yarn
-yarn dev
+- **Tailwind CSS** – Utility-first CSS framework for rapid UI development.
 
-# bun
-bun run dev
-```
+- **Vue Chart.js** – Reactive and responsive charts powered by Chart.js.
 
-## Production
+- **TypeScript** – Strongly typed language for more robust and maintainable code.
 
-Build the application for production:
+- **Pinia** – Intuitive and scalable state management for Vue applications.
+
+### 📦 Installation
 
 ```bash
-# npm
-npm run build
+# Clone the repo
+$ git clone https://github.com/your-username/seller-dashboard.git
+$ cd seller-dashboard
 
-# pnpm
-pnpm build
+# Install dependencies
+$ npm install
 
-# yarn
-yarn build
-
-# bun
-bun run build
+# Run the development server
+$ npm run dev
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

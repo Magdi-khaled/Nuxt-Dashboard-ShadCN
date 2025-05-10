@@ -1,49 +1,79 @@
 import type IColumn from "@/types/useColumn";
-import { ArrowUpDown } from "lucide-vue-next";
-import Button from "@/components/ui/button/Button.vue";
+import { h } from "vue";
+import { MoreHorizontal } from "lucide-vue-next";
 
 export const columns: IColumn[] = [
   {
-    accessorKey: "email",
-    header: ({ column }) =>
+    accessorKey: "orderID",
+    header: () => h("div", { class: "text-left" }, "Order ID"),
+    cell: ({ row }: any) =>
+      h("div", { class: "text-left font-medium" }, row.getValue("orderID")),
+  },
+  {
+    accessorKey: "product",
+    header: () => h("div", { class: "text-left" }, "Product"),
+    cell: ({ row }: any) =>
+      h("div", { class: "text-left" }, row.getValue("product")),
+  },
+  {
+    accessorKey: "orderDate",
+    header: () => h("div", { class: "text-left" }, "Order Date"),
+    cell: ({ row }: any) =>
       h(
-        Button,
-        {
-          onClick: () => column.toggleSorting(column.getIsSorted() === "asc"),
-          class: "flex items-center gap-2 active:shadow-none",
-          variant: "ghost",
-        },
-        {
-          default: () => ["Email", h(ArrowUpDown, { class: "h-4 w-4" })],
-        }
+        "div",
+        { class: "text-left text-sm text-muted-foreground" },
+        row.getValue("orderDate")
       ),
-    cell: ({ row }) => row.getValue("email"),
+  },
+  {
+    accessorKey: "price",
+    header: () => h("div", { class: "text-left" }, "Price"),
+    cell: ({ row }: any) => {
+      const amount = parseFloat(row.getValue("price"));
+      return h(
+        "div",
+        { class: "text-left font-medium" },
+        `$${amount.toFixed(2)}`
+      );
+    },
+  },
+  {
+    accessorKey: "payment",
+    header: () => h("div", { class: "text-left" }, "Payment"),
+    cell: ({ row }: any) =>
+      h("div", { class: "text-left" }, row.getValue("payment")),
   },
   {
     accessorKey: "status",
     header: () => h("div", { class: "text-left" }, "Status"),
     cell: ({ row }: any) => {
-      const status = row.getValue("status");
-
-      return h("div", { class: "text-left font-medium" }, status);
+      const value = row.getValue("status");
+      const colorClass =
+        value === "completed"
+          ? "text-green-600"
+          : value === "processing"
+          ? "text-yellow-600"
+          : "text-red-500";
+      return h(
+        "div",
+        { class: `text-left font-semibold capitalize ${colorClass}` },
+        value
+      );
     },
   },
   {
-    accessorKey: "amount",
-    header: () => h("div", { class: "text-left" }, "Amount"),
+    accessorKey: "action",
+    header: () => h("div", { class: "text-center" }, "Action"),
     cell: ({ row }: any) => {
-      const amount = Number.parseFloat(row.getValue("amount"));
-
-      return h("div", { class: "text-left font-medium" }, "$" + amount);
-    },
-  },
-  {
-    accessorKey: "id",
-    header: () => h("div", { class: "text-left" }, "ID"),
-    cell: ({ row }: any) => {
-      const id = row.getValue("id");
-
-      return h("div", { class: "text-left font-medium" }, id);
+      return h(
+        "div",
+        { class: "flex justify-center" },
+        h(MoreHorizontal, {
+          class:
+            "w-4 h-4 cursor-pointer text-muted-foreground hover:text-primary transition-colors",
+          onClick: () => console.log("Row clicked:", row.original),
+        })
+      );
     },
   },
 ];

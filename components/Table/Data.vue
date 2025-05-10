@@ -1,17 +1,17 @@
 <script setup lang="ts" generic="TData, TValue">
 import type { ColumnDef, SortingState, ColumnFiltersState } from '@tanstack/vue-table'
 import { getCoreRowModel, getPaginationRowModel, getSortedRowModel, getFilteredRowModel, useVueTable, FlexRender } from '@tanstack/vue-table';
-import { Table, TableBody, TableCell, TableHead, TableRow, } from '@/components/ui/table'
+import { Table, TableBody, TableCell, TableHead, TableRow, TableHeader } from '@/components/ui/table'
 import { valueUpdater } from '../../lib/utils';
 
 const props = defineProps<{
     columns: ColumnDef<TData, TValue>[]
-    data: TData[]
+    data: TData[],
+    showFilter?: Boolean
 }>();
 
-const sorting = ref<SortingState>([])
-const columnFilters = ref<ColumnFiltersState>([])
-
+const sorting = ref<SortingState>([]);
+const columnFilters = ref<ColumnFiltersState>([]);
 
 const table = useVueTable({
     data: props.data,
@@ -30,8 +30,8 @@ const table = useVueTable({
 </script>
 
 <template>
-    <div>
-        <TableFilteration :table="table" />
+    <div class="bg-background p-4 rounded-lg shadow-sm border w-full overflow-auto">
+        <TablePreHeader :table="table" />
         <Table>
             <TableHeader>
                 <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
@@ -42,7 +42,6 @@ const table = useVueTable({
                     </TableHead>
                 </TableRow>
             </TableHeader>
-
             <TableBody>
                 <template v-if="table.getRowModel().rows?.length">
                     <TableRow v-for="row in table.getRowModel().rows" :key="row.id">
@@ -61,7 +60,7 @@ const table = useVueTable({
             </TableBody>
         </Table>
 
-        <div class="flex items-center justify-center py-4 gap-4">
+        <div v-if="showFilter" class="flex items-center justify-center py-4 gap-4">
             <Button variant="outline" size="sm" :disabled="!table.getCanPreviousPage()" @click="table.previousPage()">
                 <Icon name="mingcute:left-fill" size="22" />
             </Button>

@@ -8,7 +8,7 @@ const props = defineProps<{ card: ICard }>();
 <template>
     <Card v-if="props.card" class="py-4 px-1 cursor-grabbing">
         <CardHeader class="flex justify-between">
-            <h2 class="text-lg font-semibold">{{ props.card.title }}</h2>
+            <h2 class="text-lg">{{ props.card.title }}</h2>
             <p
                 class="w-[36px] h-[38px] flex items-center justify-center text-neutral-900 dark:text-neutral-200 bg-gray-100 dark:bg-neutral-800 rounded-sm">
                 <Icon :name="props.card.icon" size="30" />

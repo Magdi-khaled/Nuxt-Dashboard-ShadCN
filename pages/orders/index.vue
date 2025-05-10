@@ -1,16 +1,15 @@
 <script setup lang="ts">
-
-const data = useMockTransactions();
+const data = useMockOrders();
 </script>
 
 <template>
     <div class="grid w-full gap-4">
         <header class="flex items-start">
             <div class="grow">
-                <p>All your transactions</p>
-                <h1>Transactions</h1>
+                <h1>Orders</h1>
+                <p class="capitalize text-sm">all your deliviry orders</p>
             </div>
         </header>
-        <TableData :columns="columns" :data="data" />
+        <TableData :columns="columns" :data="data" :show-filter="true" />
     </div>
 </template>

@@ -3,6 +3,8 @@ const { generateRandomValue } = useHelper();
 const isClicked = ref<number>(0);
 const orderData = computed<number[]>(() => generateRandomValue(12));
 const revenueData = computed<number[]>(() => generateRandomValue(12));
+
+const data = useMockOrders();
 </script>
 
 <template>
@@ -24,6 +26,7 @@ const revenueData = computed<number[]>(() => generateRandomValue(12));
                     :revenue-data="revenueData" />
                 <Showcase />
             </div>
+            <TableData :columns="columns" :data="data.slice(0, 3)" />
         </main>
     </div>
 </template>

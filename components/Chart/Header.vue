@@ -7,7 +7,7 @@ const items = reactive<string[]>(['Average', 'Refunds', 'Profit']);
 
 <template>
     <div class="flex items-center justify-between pb-2">
-        <h2 class="capitalize font-semibold">Sales overtime</h2>
+        <h2>Sales overtime</h2>
         <div class="flex items-center gap-2">
             <div class="flex items-center text-[#9D1DA8]">
                 <Icon name="codicon:circle-small-filled" size="20" />

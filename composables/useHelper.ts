@@ -2,6 +2,31 @@ import { ref } from "vue";
 export default function useHelper() {
   const loading = ref(false);
   const open = ref(false);
+  const statuses = ["processing", "completed", "pending"];
+  const payments = ["Credit Card", "Visa", "PayPal", "Transfer"];
+  const products = [
+    "Nike Sportswear",
+    "Adidas Running Shoes",
+    "Puma Hoodie",
+    "Under Armour Shorts",
+    "New Balance Sneakers",
+    "Reebok Gym Towel",
+    "ASICS Trail Shoes",
+  ];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   const generateRandomData = (numObjects: number) => {
     const statuses = ["pending", "processing", "completed"];
@@ -37,6 +62,10 @@ export default function useHelper() {
   return {
     open,
     loading,
+    statuses,
+    payments,
+    products,
+    months,
     generateRandomData,
     generateRandomValue,
   };

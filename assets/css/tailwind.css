@@ -123,6 +123,9 @@
   h1 {
     @apply text-[20px] md:text-[24px] lg:text-[36px] font-[400] dark:text-neutral-100;
   }
+  h2 {
+    @apply capitalize font-semibold;
+  }
   p {
     @apply text-sm sm:text-[14px];
   }

@@ -29,8 +29,8 @@ const items = ref([
                     <NuxtLink :to="item.path"
                         class="flex items-center gap-2 cursor-pointer font-medium hover:bg-neutral-100 hover:dark:text-neutral-800 px-2 py-1"
                         :class="{
-                            'bg-neutral-300 hover:bg-neutral-300 dark:bg-[#2e2e2e] hover:dark:text-white': route.name === item.title.toLowerCase()
-                                || route.name === 'index' && index === 0
+                            'bg-neutral-300 hover:bg-neutral-300 dark:bg-[#2e2e2e] hover:dark:text-white':
+                                route.name === item.title.toLowerCase() || route.name === 'index' && index === 0
                         }">
                         <Icon :name="item.icon" size="20" />
                         {{ item.title }}

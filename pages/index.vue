@@ -3,7 +3,6 @@ const { generateRandomValue } = useHelper();
 const isClicked = ref<number>(0);
 const orderData = computed<number[]>(() => generateRandomValue(12));
 const revenueData = computed<number[]>(() => generateRandomValue(12));
-
 </script>
 
 <template>
@@ -21,9 +20,9 @@ const revenueData = computed<number[]>(() => generateRandomValue(12));
                     :class="{ 'bg-[#1e1e1e] dark:bg-neutral-800 text-primary-foreground dark:text-primary': isClicked === index }" />
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <Chart v-if="orderData.length > 0 && revenueData.length > 0" :orders-data="orderData"
+                <Chart v-if="orderData.length > 0 && orderData.length > 0" :orders-data="orderData"
                     :revenue-data="revenueData" />
-                <!-- <Chart v-if="data.length > 0" :data="data" /> -->
+                <Showcase />
             </div>
         </main>
     </div>

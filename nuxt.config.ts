@@ -7,8 +7,20 @@ export default defineNuxtConfig({
   css: ["~/assets/css/tailwind.css"],
   app: {
     head: {
-      title: "Interactive Dashboard",
-      link: [{ rel: "icon", type: "image/x-icon", href: "/logo.png" }],
+      title: "Dashboard | Novanest",
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/web-icon.png" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap",
+        },
+      ],
     },
   },
   vite: {

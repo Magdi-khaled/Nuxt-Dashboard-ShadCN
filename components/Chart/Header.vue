@@ -1,7 +1,8 @@
 <script setup lang="ts">
-const props = defineProps<{
-    title?: string
-}>();
+const props = defineProps<{ title?: string }>();
+const show = ref(false);
+const items = reactive<string[]>(['Average', 'Refunds', 'Profit']);
+
 </script>
 
 <template>
@@ -16,10 +17,9 @@ const props = defineProps<{
                 <Icon name="codicon:circle-small-filled" size="20" />
                 <p class="capitalize">order</p>
             </div>
-            <span
-                class="cursor-pointer bg-neutral-100 dark:bg-neutral-700 flex justify-center items-center p-[3px] rounded-xs hover:bg-neutral-200 transition">
-                <Icon name="stash:burger-classic-duotone" size="20" />
-            </span>
+            <div class="relative flex items-center justify-center">
+                <ChartDropDown :items="items" />
+            </div>
         </div>
     </div>
 </template>

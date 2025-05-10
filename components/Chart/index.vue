@@ -9,7 +9,7 @@ const generateLabels = (): string[] => {
     let labels: string[] = [];
     for (let i = currentMonth; i < months.length; i++) labels.push(months[i]);
     return labels;
-}
+};
 const chartJSData = computed(() => {
     return {
         labels: generateLabels(),

@@ -23,7 +23,7 @@ const props = defineProps<{
 <template>
     <div class="rounded-lg border p-4 shadow-xs bg-white dark:bg-background">
         <ChartHeader :title="props.title" />
-        <div class="h-[260px]">
+        <div class="h-[280px]">
             <Line :data="chartData" :options="chartOptions" />
         </div>
     </div>

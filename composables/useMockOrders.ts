@@ -12,7 +12,7 @@ export const useMockOrders = () => {
       return `${hour}:${minutes} ${ampm}`;
     };
 
-    const generateRandomDate = () => {
+    const generateDate = () => {
       const month = months[Math.floor(Math.random() * months.length)];
       const day = Math.floor(Math.random() * 28) + 1;
       return `${month} ${day}, ${generateRandomTime()}`;
@@ -25,7 +25,7 @@ export const useMockOrders = () => {
           1000 + Math.random() * 9000
         )}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`;
         const product = products[Math.floor(Math.random() * products.length)];
-        const orderDate = generateRandomDate();
+        const orderDate = generateDate();
         const price = (Math.random() * 400 + 50).toFixed(2);
         const payment = payments[Math.floor(Math.random() * payments.length)];
         const status = statuses[Math.floor(Math.random() * statuses.length)];

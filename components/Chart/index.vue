@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import ChartLine from '@/components/ui/chart-line/ChartLine.vue';
-const props = defineProps<{ revenueData: number[], ordersData: number[], }>();
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const currentMonth = new Date(Date.now()).getMonth();
-
+const { months } = useHelper();
 const colorMode = useColorMode();
-const generateLabels = (): string[] => {
+const props = defineProps<{ revenueData: number[], ordersData: number[], }>();
+
+const currentMonth = new Date(Date.now()).getMonth();
+const generateLabels = computed((): string[] => {
     let labels: string[] = [];
-    for (let i = currentMonth; i < months.length; i++) labels.push(months[i]);
+    for (let i = months.length - 2; i >= currentMonth; i--) labels.push(months[i]);
     return labels;
-};
+});
 const chartJSData = computed(() => {
     return {
-        labels: generateLabels(),
+        labels: generateLabels.value,
         datasets: [
             {
                 backgroundColor: '#9D1DA8',
@@ -34,7 +34,6 @@ const chartJSData = computed(() => {
         ],
     };
 });
-
 const chartOptions = computed(() => {
     const tickColor = colorMode.preference !== 'dark' ? '#1e1e1e' : '#fff';
     return {

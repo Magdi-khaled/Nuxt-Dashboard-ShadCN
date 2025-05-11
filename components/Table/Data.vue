@@ -80,10 +80,12 @@ const option = (row: any, type: number) =>
         </Table>
 
         <footer v-if="showFilter" class="flex flex-wrap text-xs font-medium items-center justify-between mt-2">
-            <div class="capitalize text-neutral-500 flex items-center gap-[1px]">all orders
-                (<p class="text-green-700 text-xs">completed: {{ ordersTypes?.completed }}</p>/
-                <p class="text-yellow-700 text-xs">processing : {{ ordersTypes?.processing }}</p>/
-                <p class="text-red-700 text-xs">pending: {{ ordersTypes?.pending }}</p>)
+            <div class="capitalize text-neutral-500 flex flex-wrap items-center gap-[1px]">all orders
+                (<p class="text-blue-600 text-xs">ordered: {{ ordersTypes?.ordered }}</p>/
+                <p class="text-orange-700 text-xs">processing : {{ ordersTypes?.processing }}</p>/
+                <p class="text-red-700 text-xs">pending: {{ ordersTypes?.pending }}</p>/
+                <p class="text-cyan-700 text-xs">delivering: {{ ordersTypes?.delivering }}</p>/
+                <p class="text-green-700 text-xs">completed: {{ ordersTypes?.completed }}</p>)
             </div>
             <TablePagination :table="table" class="sm:w-fit grow justify-end" />
         </footer>

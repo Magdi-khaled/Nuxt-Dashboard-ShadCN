@@ -9,7 +9,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js'
-import { Line } from 'vue-chartjs'
+import { Line } from 'vue-chartjs';
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend)
 

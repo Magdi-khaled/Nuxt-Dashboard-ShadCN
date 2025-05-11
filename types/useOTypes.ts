@@ -1,5 +1,7 @@
 export default interface IOTypes {
-  completed: number;
+  ordered: number;
   processing: number;
   pending: number;
+  delivering: number;
+  completed: number;
 }

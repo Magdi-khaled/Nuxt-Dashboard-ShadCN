@@ -4,7 +4,13 @@ import type IOTypes from "~/types/useOTypes";
 export default function useHelper() {
   const loading = ref(false);
   const open = ref(false);
-  const statuses = ["processing", "completed", "pending"];
+  const statuses = [
+    "ordered",
+    "processing",
+    "pending",
+    "delivering",
+    "completed",
+  ];
   const payments = ["Credit Card", "Visa", "PayPal", "Transfer"];
   const products = [
     "Nike Sportswear",
@@ -30,28 +36,6 @@ export default function useHelper() {
     "Dec",
   ];
 
-  const generateRandomData = (numObjects: number) => {
-    const statuses = ["pending", "processing", "completed"];
-    const emails = [
-      "example@gmail.com",
-      "m@example.com",
-      "test@example.com",
-      "user@example.com",
-    ];
-
-    const randomData: any[] = [];
-
-    for (let i = 0; i < numObjects; i++) {
-      const id = Math.random().toString(36);
-      const amount = Math.floor(Math.random() * 1000) + 50;
-      const status = statuses[Math.floor(Math.random() * statuses.length)];
-      const email = emails[Math.floor(Math.random() * emails.length)];
-
-      randomData.push({ id, amount, status, email });
-    }
-
-    return randomData;
-  };
   const generateRandomValue = (number = 7): number[] => {
     let values = [];
     for (let j = 0; j < number + 1; j++) {
@@ -59,17 +43,23 @@ export default function useHelper() {
     }
     return values;
   };
+
   const allOrderList = (data: IOrder[]): IOTypes => {
-    let completed = 0,
+    let ordered = 0,
       processing = 0,
-      pending = 0;
+      pending = 0,
+      delivering = 0,
+      completed = 0;
     for (let i = 0; i < data.length; i++) {
-      if (data[i].status === "completed") completed++;
+      if (data[i].status === "ordered") ordered++;
       else if (data[i].status === "processing") processing++;
-      else pending++;
+      else if (data[i].status === "delivering") delivering++;
+      else if (data[i].status === "pending") pending++;
+      else completed++;
     }
-    return { completed, processing, pending };
+    return { ordered, processing, delivering, pending, completed };
   };
+
   return {
     open,
     loading,
@@ -77,7 +67,6 @@ export default function useHelper() {
     payments,
     products,
     months,
-    generateRandomData,
     generateRandomValue,
     allOrderList,
   };

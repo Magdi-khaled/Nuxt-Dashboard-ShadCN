@@ -47,11 +47,15 @@ export const columns: IColumn[] = [
     cell: ({ row }: any) => {
       const value = row.getValue("status");
       const colorClass =
-        value === "completed"
-          ? "text-green-600"
+        value === "ordered"
+          ? "text-blue-600"
           : value === "processing"
           ? "text-yellow-600"
-          : "text-red-500";
+          : value === "pending"
+          ? "text-red-700"
+          : value === "delivering"
+          ? "text-cyan-700"
+          : "text-green-700";
       return h(
         "div",
         { class: `text-left font-semibold capitalize ${colorClass}` },

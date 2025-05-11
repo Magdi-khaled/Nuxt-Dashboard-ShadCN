@@ -121,7 +121,7 @@
     @apply bg-background text-neutral-900 dark:bg-background dark:text-primary font-[assistant];
   }
   h1 {
-    @apply text-[20px] md:text-[24px] lg:text-[36px] font-[400] dark:text-neutral-100;
+    @apply text-[20px] md:text-[24px] lg:text-[32px] font-[400] dark:text-neutral-100;
   }
   h2 {
     @apply capitalize font-semibold;

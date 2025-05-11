@@ -17,7 +17,7 @@ const table = useVueTable({
 
 <template>
     <div class="w-full overflow-auto flex flex-col gap-8 my-6 h-[87dvh]">
-        <h1 class="capitalize font-semibold w-fit text-neutral-600 text-lg sm:text-[28px]">
+        <h1 class="capitalize font-semibold w-fit text-neutral-600 dark:text-neutral-300 text-lg sm:text-[28px]">
             tracking shipment order: #{{ route.params.id }}</h1>
 
         <OrderShipment :status="order?.status" />

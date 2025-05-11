@@ -15,7 +15,7 @@ const items = reactive([
 
 <template>
     <DropdownMenu>
-        <DropdownMenuTrigger class="flex items-center justify-center cursor-pointer hover:opacity-[0.75]">
+        <DropdownMenuTrigger aria-role="button" class="flex items-center justify-center cursor-pointer hover:opacity-[0.75]">
             <Icon name="iconamoon:arrow-down-2-thin" size="30" />
         </DropdownMenuTrigger>
         <DropdownMenuContent class="absolute right-[-12px]">

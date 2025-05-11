@@ -21,7 +21,7 @@ export const useMockOrders = () => {
     const generateRandomData = (num: number) => {
       const data = [];
       for (let i = 0; i < num; i++) {
-        const orderID = `#${Math.floor(
+        const orderID = `${Math.floor(
           1000 + Math.random() * 9000
         )}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`;
         const product = products[Math.floor(Math.random() * products.length)];

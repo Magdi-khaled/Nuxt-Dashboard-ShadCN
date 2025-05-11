@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     head: {
       title: "Dashboard | Novanest",
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/web-icon.png" },
+        { rel: "icon", type: "image/x-icon", href: "/icons/web-icon.png" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
@@ -20,6 +20,10 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap",
         },
+      ],
+      meta: [
+        { name: "description", content: "Interactive E-commerce dashboard" },
+        { name: "keywords", content: "e-commerce, dashboard, admin, shop" },
       ],
     },
   },

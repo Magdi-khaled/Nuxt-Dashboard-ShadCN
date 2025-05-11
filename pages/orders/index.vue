@@ -1,5 +1,7 @@
 <script setup lang="ts">
+const { allOrderList } = useHelper();
 const data = useMockOrders();
+const { completed, processing, pending } = allOrderList(data.value);
 </script>
 
 <template>
@@ -10,6 +12,7 @@ const data = useMockOrders();
                 <p class="capitalize text-sm">all your deliviry orders</p>
             </div>
         </header>
-        <TableData :columns="columns" :data="data" :show-filter="true" />
+        <TableData :columns="columns" :data="data" :show-filter="true"
+            :orders-types="{ completed, processing, pending }" />
     </div>
 </template>

@@ -2,9 +2,9 @@
 import type IProductCard from '~/types/useProductCard';
 
 const items = reactive<IProductCard[]>([
-    { title: 'Red Tape Sports Shoes for Men', path: '/media/products/shoe.png', stock: 135, sales: 120 },
-    { title: 'Fastrack FS1 Pro Smartwatch', path: '/media/products/watch.png', stock: 76, sales: 157 },
-    { title: 'Leriya Fashion Men\'s Shirt', path: '/media/products/shirt.png', stock: 465, sales: 235 },
+    { title: 'Red Tape Sports Shoes for Men', path: '/media/products/shoe.webp', stock: 135, sales: 120 },
+    { title: 'Fastrack FS1 Pro Smartwatch', path: '/media/products/watch.webp', stock: 76, sales: 157 },
+    { title: 'Leriya Fashion Men\'s Shirt', path: '/media/products/shirt.avif', stock: 465, sales: 235 },
 ]);
 </script>
 

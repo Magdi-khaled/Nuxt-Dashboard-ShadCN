@@ -3,13 +3,15 @@ import type { ColumnDef, SortingState, ColumnFiltersState } from '@tanstack/vue-
 import { getCoreRowModel, getPaginationRowModel, getSortedRowModel, getFilteredRowModel, useVueTable, FlexRender } from '@tanstack/vue-table';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableHeader } from '@/components/ui/table'
 import { valueUpdater } from '../../lib/utils';
+import type IOTypes from '~/types/useOTypes';
 
 const props = defineProps<{
     columns: ColumnDef<TData, TValue>[]
     data: TData[],
     showFilter?: Boolean
+    ordersTypes?: IOTypes
 }>();
-
+const router = useRouter();
 const sorting = ref<SortingState>([]);
 const columnFilters = ref<ColumnFiltersState>([]);
 
@@ -27,6 +29,10 @@ const table = useVueTable({
         get columnFilters() { return columnFilters.value },
     },
 });
+
+const option = (row: any, type: number) =>
+    type === 1 ? router.push(`/orders/${toRaw(row).orderID}`) :
+        router.push(`/orders/edit/${toRaw(row).orderID}`);
 </script>
 
 <template>
@@ -45,8 +51,21 @@ const table = useVueTable({
             <TableBody>
                 <template v-if="table.getRowModel().rows?.length">
                     <TableRow v-for="row in table.getRowModel().rows" :key="row.id">
-                        <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
-                            <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
+                        <TableCell v-for="cell, index in row.getVisibleCells()" :key="cell.id">
+                            <FlexRender v-if="index !== 6" :render="cell.column.columnDef.cell"
+                                :props="cell.getContext()" />
+                            <div v-else class="flex items-center justify-center text-neutral-600 cursor-pointer">
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger
+                                        class="flex items-center justify-center cursor-pointer hover:opacity-[0.75]">
+                                        <Icon name="lucide:more-horizontal" size="19" />
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent side="bottom" align="end">
+                                        <DropdownMenuItem @select="option(row.original, 1)">View</DropdownMenuItem>
+                                        <DropdownMenuItem @select="option(row.original, 2)">Edit</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </div>
                         </TableCell>
                     </TableRow>
                 </template>
@@ -60,13 +79,13 @@ const table = useVueTable({
             </TableBody>
         </Table>
 
-        <div v-if="showFilter" class="flex items-center justify-center py-4 gap-4">
-            <Button variant="outline" size="sm" :disabled="!table.getCanPreviousPage()" @click="table.previousPage()">
-                <Icon name="mingcute:left-fill" size="22" />
-            </Button>
-            <Button variant="outline" size="sm" :disabled="!table.getCanNextPage()" @click="table.nextPage()">
-                <Icon name="mingcute:right-fill" size="22" />
-            </Button>
+        <div v-if="showFilter" class="flex flex-wrap items-center justify-between mt-2">
+            <p class="capitalize text-xs text-neutral-500">all orders
+                (<span class="text-green-700">completed: {{ ordersTypes?.completed }}</span>/
+                <span class="text-yellow-700">processing : {{ ordersTypes?.processing }}</span>/
+                <span class="text-red-700">pending: {{ ordersTypes?.pending }}</span>)
+            </p>
+            <TablePagination :table="table" class="sm:w-fit grow justify-end" />
         </div>
     </div>
 </template>

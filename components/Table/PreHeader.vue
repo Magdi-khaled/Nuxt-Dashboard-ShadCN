@@ -12,7 +12,6 @@ defineProps(['table']);
         <TableFilteration v-else :table="table" />
         <div class="flex gap-2 w-full sm:w-fit justify-end">
             <Button variant="outline">Customize</Button>
-            <!-- <Button variant="ghost">Filter</Button> -->
             <Button variant="ghost">Export</Button>
         </div>
     </div>

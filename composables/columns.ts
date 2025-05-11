@@ -1,6 +1,4 @@
 import type IColumn from "@/types/useColumn";
-import { h } from "vue";
-import { MoreHorizontal } from "lucide-vue-next";
 
 export const columns: IColumn[] = [
   {
@@ -65,15 +63,7 @@ export const columns: IColumn[] = [
     accessorKey: "action",
     header: () => h("div", { class: "text-center" }, "Action"),
     cell: ({ row }: any) => {
-      return h(
-        "div",
-        { class: "flex justify-center" },
-        h(MoreHorizontal, {
-          class:
-            "w-4 h-4 cursor-pointer text-muted-foreground hover:text-primary transition-colors",
-          onClick: () => console.log("Row clicked:", row.original),
-        })
-      );
+      return h("div", { class: "flex justify-center" });
     },
   },
 ];

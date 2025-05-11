@@ -1,4 +1,6 @@
-import { ref } from "vue";
+import type IOrder from "~/types/useOrder";
+import type IOTypes from "~/types/useOTypes";
+
 export default function useHelper() {
   const loading = ref(false);
   const open = ref(false);
@@ -50,7 +52,6 @@ export default function useHelper() {
 
     return randomData;
   };
-
   const generateRandomValue = (number = 7): number[] => {
     let values = [];
     for (let j = 0; j < number + 1; j++) {
@@ -58,7 +59,18 @@ export default function useHelper() {
     }
     return values;
   };
-
+  const allOrderList = (data: IOrder[]): IOTypes => {
+    console.log(data);
+    let completed = 0,
+      processing = 0,
+      pending = 0;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].status === "completed") completed++;
+      else if (data[i].status === "processing") processing++;
+      else pending++;
+    }
+    return { completed, processing, pending };
+  };
   return {
     open,
     loading,
@@ -68,5 +80,6 @@ export default function useHelper() {
     months,
     generateRandomData,
     generateRandomValue,
+    allOrderList,
   };
 }

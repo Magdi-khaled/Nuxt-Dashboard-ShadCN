@@ -9,7 +9,11 @@ export default defineNuxtConfig({
     head: {
       title: "Dashboard | Novanest",
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/icons/web-icon.png" },
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/media/icons/web-icon.png",
+        },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",

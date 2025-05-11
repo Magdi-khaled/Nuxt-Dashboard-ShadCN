@@ -79,13 +79,13 @@ const option = (row: any, type: number) =>
             </TableBody>
         </Table>
 
-        <div v-if="showFilter" class="flex flex-wrap items-center justify-between mt-2">
+        <footer v-if="showFilter" class="flex flex-wrap items-center justify-between mt-2">
             <p class="capitalize text-xs text-neutral-500">all orders
                 (<span class="text-green-700">completed: {{ ordersTypes?.completed }}</span>/
                 <span class="text-yellow-700">processing : {{ ordersTypes?.processing }}</span>/
                 <span class="text-red-700">pending: {{ ordersTypes?.pending }}</span>)
             </p>
             <TablePagination :table="table" class="sm:w-fit grow justify-end" />
-        </div>
+        </footer>
     </div>
 </template>

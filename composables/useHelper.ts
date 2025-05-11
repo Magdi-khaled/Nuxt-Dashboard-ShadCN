@@ -60,7 +60,6 @@ export default function useHelper() {
     return values;
   };
   const allOrderList = (data: IOrder[]): IOTypes => {
-    console.log(data);
     let completed = 0,
       processing = 0,
       pending = 0;

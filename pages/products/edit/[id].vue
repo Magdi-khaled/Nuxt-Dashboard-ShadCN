@@ -4,6 +4,6 @@ const route = useRoute();
 
 <template>
     <div>
-        Edit product:#{{ route.params.id }}
+        <h1></h1>
     </div>
 </template>

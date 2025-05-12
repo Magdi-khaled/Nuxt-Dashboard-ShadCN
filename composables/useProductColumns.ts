@@ -15,7 +15,7 @@ export const productColumns: IColumn[] = [
       const imageUrl = row.original.preview;
       return h("img", {
         src: imageUrl,
-        class: "w-[60px] h-auto rounded",
+        class: "w-[70px] h-[65px] rounded",
         alt: "Preview Image",
       });
     },
@@ -44,6 +44,18 @@ export const productColumns: IColumn[] = [
     cell: ({ row }: any) => {
       const quantity = row.getValue("quantity");
       return h("div", { class: "pl-4 text-left font-medium" }, `${quantity}`);
+    },
+  },
+  {
+    accessorKey: "category",
+    header: () => h("div", { class: "text-left" }, "Category"),
+    cell: ({ row }: any) => {
+      const category = row.getValue("category");
+      return h(
+        "div",
+        { class: "text-left font-medium capitalize" },
+        `${category}`
+      );
     },
   },
   {

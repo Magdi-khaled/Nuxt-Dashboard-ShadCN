@@ -47,7 +47,7 @@ const option = (row: any, type: number) =>
                 <template v-if="table.getRowModel().rows?.length">
                     <TableRow v-for="row in table.getRowModel().rows" :key="row.id">
                         <TableCell v-for="cell, index in row.getVisibleCells()" :key="cell.id">
-                            <FlexRender v-if="index !== 6" :render="cell.column.columnDef.cell"
+                            <FlexRender v-if="index !== 7" :render="cell.column.columnDef.cell"
                                 :props="cell.getContext()" />
                             <div v-else class="flex items-center justify-center text-neutral-600 cursor-pointer">
                                 <DropdownMenu>
@@ -62,7 +62,8 @@ const option = (row: any, type: number) =>
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
-                                <ProductDeleteModal v-model:isModalValue="modalValue" :product="selectedProduct as IProduct" />
+                                <ProductDeleteModal v-model:isModalValue="modalValue"
+                                    :product="selectedProduct as IProduct" />
                             </div>
                         </TableCell>
                     </TableRow>

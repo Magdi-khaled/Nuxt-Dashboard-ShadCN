@@ -17,6 +17,13 @@ export const useMockProducts = () => {
       "/media/products/product32.webp",
       "/media/products/product33.webp",
     ];
+    const categories = [
+      "women's wear",
+      "men's wear",
+      "shoes",
+      "bags",
+      "accessories",
+    ];
 
     const generateRandomProducts = (num: number) => {
       const data = [];
@@ -29,6 +36,8 @@ export const useMockProducts = () => {
         const product = products[Math.floor(Math.random() * products.length)];
         const createdDate = generateDate();
         const price = parseFloat((Math.random() * 400 + 50).toFixed(2));
+        const category =
+          categories[Math.floor(Math.random() * categories.length)];
         const quantity = parseFloat((Math.random() * 200 + 50).toFixed(0));
 
         data.push({
@@ -37,6 +46,7 @@ export const useMockProducts = () => {
           product,
           price,
           quantity,
+          category,
           createdDate,
         });
       }

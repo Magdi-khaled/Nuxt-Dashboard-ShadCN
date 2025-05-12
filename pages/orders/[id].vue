@@ -7,7 +7,7 @@ const order = computed(() => data.value.find(v => v.orderID === route.params.id)
 
 const table = useVueTable({
     data: order.value ? [order.value] : [],
-    columns: columns,
+    columns: orderColumns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),

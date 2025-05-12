@@ -1,6 +1,6 @@
 import type IColumn from "@/types/useColumn";
 
-export const columns: IColumn[] = [
+export const orderColumns: IColumn[] = [
   {
     accessorKey: "orderID",
     header: () => h("div", { class: "text-left" }, "Order ID"),

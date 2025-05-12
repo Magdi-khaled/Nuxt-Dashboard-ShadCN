@@ -12,7 +12,7 @@ const { ordered, processing, delivering, pending, completed } = allOrderList(dat
                 <p class="capitalize text-sm">all your deliviry orders</p>
             </div>
         </header>
-        <TableData :columns="columns" :data="data" :show-filter="true"
+        <OrderTable :columns="orderColumns" :data="data" :show-filter="true"
             :orders-types="{ ordered, processing, pending, delivering, completed }" />
     </div>
 </template>

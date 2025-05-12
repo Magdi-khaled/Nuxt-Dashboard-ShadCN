@@ -1,5 +1,5 @@
 <script setup>
-const open = ref(false);
+const { open } = useHelper();
 </script>
 <template>
     <div class=" lg:sticky top-0">

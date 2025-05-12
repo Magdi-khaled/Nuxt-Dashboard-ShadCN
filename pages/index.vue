@@ -26,7 +26,7 @@ const data = useMockOrders();
                     :revenue-data="revenueData" />
                 <Showcase />
             </div>
-            <TableData :columns="columns" :data="data.slice(0, 3)" />
+            <OrderTable :columns="orderColumns" :data="data.slice(0, 3)" />
         </main>
     </div>
 </template>

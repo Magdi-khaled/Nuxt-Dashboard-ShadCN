@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="TData, TValue">
-import type { ColumnDef, SortingState, ColumnFiltersState } from '@tanstack/vue-table'
-import { getCoreRowModel, getPaginationRowModel, getSortedRowModel, getFilteredRowModel, useVueTable, FlexRender } from '@tanstack/vue-table';
+import type { ColumnDef, ColumnFiltersState } from '@tanstack/vue-table'
+import { getCoreRowModel, getPaginationRowModel, getFilteredRowModel, useVueTable, FlexRender } from '@tanstack/vue-table';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableHeader } from '@/components/ui/table'
 import { valueUpdater } from '../../lib/utils';
 import type IOTypes from '~/types/useOTypes';
@@ -12,7 +12,6 @@ const props = defineProps<{
     ordersTypes?: IOTypes
 }>();
 const router = useRouter();
-const sorting = ref<SortingState>([]);
 const columnFilters = ref<ColumnFiltersState>([]);
 
 const table = useVueTable({
@@ -20,14 +19,9 @@ const table = useVueTable({
     columns: props.columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
     onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
     getFilteredRowModel: getFilteredRowModel(),
-    state: {
-        get sorting() { return sorting.value },
-        get columnFilters() { return columnFilters.value },
-    },
+    state: { get columnFilters() { return columnFilters.value }, },
 });
 
 const option = (row: any, type: number) =>
@@ -87,7 +81,7 @@ const option = (row: any, type: number) =>
                 <p class="text-cyan-700 text-xs">delivering: {{ ordersTypes?.delivering }}</p>/
                 <p class="text-green-700 text-xs">completed: {{ ordersTypes?.completed }}</p>)
             </div>
-            <TablePagination :table="table" class="sm:w-fit grow justify-end" />
+            <Pagination :table="table" class="sm:w-fit grow justify-end" />
         </footer>
     </div>
 </template>

@@ -18,7 +18,7 @@ export const useMockOrders = () => {
       return `${month} ${day}, ${generateRandomTime()}`;
     };
 
-    const generateRandomData = (num: number) => {
+    const generateRandomOrders = (num: number) => {
       const data = [];
       for (let i = 0; i < num; i++) {
         const orderID = `${Math.floor(
@@ -42,6 +42,6 @@ export const useMockOrders = () => {
       return data;
     };
 
-    return generateRandomData(25);
+    return generateRandomOrders(25);
   });
 };

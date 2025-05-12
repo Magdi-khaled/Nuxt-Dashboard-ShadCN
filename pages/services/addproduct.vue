@@ -4,6 +4,6 @@
 
 <template>
     <div>
-        hello from addproduct page
+        hello from addproduct component
     </div>
 </template>

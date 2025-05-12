@@ -2,8 +2,8 @@ import type IOrder from "~/types/useOrder";
 import type IOTypes from "~/types/useOTypes";
 
 export default function useHelper() {
+  const open = useState("sidebar-open", () => false);
   const loading = ref(false);
-  const open = ref(false);
   const statuses = [
     "ordered",
     "processing",
@@ -36,6 +36,20 @@ export default function useHelper() {
     "Dec",
   ];
 
+  const generateRandomTime = () => {
+    const hour = Math.floor(Math.random() * 12) + 1;
+    const minutes = Math.floor(Math.random() * 60)
+      .toString()
+      .padStart(2, "0");
+    const ampm = Math.random() > 0.5 ? "am" : "pm";
+    return `${hour}:${minutes} ${ampm}`;
+  };
+  const generateDate = () => {
+    const month = months[Math.floor(Math.random() * months.length)];
+    const day = Math.floor(Math.random() * 28) + 1;
+    return `${month} ${day}, ${generateRandomTime()}`;
+  };
+
   const generateRandomValue = (number = 7): number[] => {
     let values = [];
     for (let j = 0; j < number + 1; j++) {
@@ -67,6 +81,7 @@ export default function useHelper() {
     payments,
     products,
     months,
+    generateDate,
     generateRandomValue,
     allOrderList,
   };

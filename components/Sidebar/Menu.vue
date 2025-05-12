@@ -12,6 +12,7 @@ const items = ref([
     { title: 'Settings', path: '/settings', icon: 'mdi:settings-outline' },
     { title: 'Help & Support', path: '/support', icon: 'ph:question-light' }
 ]);
+const { open } = useHelper();
 </script>
 
 <template>
@@ -26,7 +27,7 @@ const items = ref([
         <nav class="pl-4 grow">
             <ul class="grid gap-2">
                 <li v-for="(item, index) in items" :key="index">
-                    <NuxtLink :to="item.path"
+                    <NuxtLink :to="item.path" @click="open = false"
                         class="flex items-center gap-2 cursor-pointer font-medium hover:bg-neutral-100 hover:dark:text-neutral-800 px-2 py-1"
                         :class="{
                             'bg-neutral-300 hover:bg-neutral-300 dark:bg-[#2e2e2e] hover:dark:text-white':

@@ -129,6 +129,9 @@
   p {
     @apply text-sm sm:text-[14px];
   }
+  label {
+    @apply text-sm sm:text-[15px] font-medium;
+  }
   ::selection {
     @apply bg-primary text-primary-foreground;
   }

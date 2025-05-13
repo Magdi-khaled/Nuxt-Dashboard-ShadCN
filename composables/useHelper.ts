@@ -36,6 +36,13 @@ export default function useHelper() {
     "Dec",
   ];
 
+  const categories = [
+    "women's wear",
+    "men's wear",
+    "shoes",
+    "bags",
+    "accessories",
+  ];
   const generateRandomTime = () => {
     const hour = Math.floor(Math.random() * 12) + 1;
     const minutes = Math.floor(Math.random() * 60)
@@ -81,6 +88,7 @@ export default function useHelper() {
     payments,
     products,
     months,
+    categories,
     generateDate,
     generateRandomValue,
     allOrderList,

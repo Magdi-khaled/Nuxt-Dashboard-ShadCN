@@ -4,13 +4,13 @@ const router = useRouter();
 const items = ref([
     { title: 'Overview', path: '/', icon: 'ic:outline-dashboard' },
     { title: 'Services', path: '/services', icon: 'material-symbols:home-repair-service-outline-sharp' },
-    { title: 'Products', path: '/products', icon: 'fluent:box-20-regular' },
+    { title: 'Products', path: '/products', icon: 'fluent:box-24-regular' },
     { title: 'Orders', path: '/orders', icon: 'lets-icons:box-alt' },
     { title: 'Shipment', path: '/orders/shipment', icon: 'tdesign:compass' },
     { title: 'Account', path: '/account', icon: 'lucide:bolt' },
     { title: 'Contacts', path: '/contacts', icon: 'lucide:square-user-round' },
     { title: 'Settings', path: '/settings', icon: 'mdi:settings-outline' },
-    { title: 'Help & Support', path: '/support', icon: 'ph:question-light' }
+    { title: 'Help & Support', path: '/support', icon: 'ph:question-bold' }
 ]);
 const { open } = useHelper();
 </script>

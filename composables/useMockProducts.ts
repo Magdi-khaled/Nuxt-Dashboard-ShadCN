@@ -1,7 +1,9 @@
+import type IProduct from "~/types/useProduct";
+
 // composables/useMockProducts.ts
 export const useMockProducts = () => {
   return useState("mock-products", () => {
-    const { products, generateDate } = useHelper();
+    const { products, categories, generateDate } = useHelper();
 
     const sampleImages = [
       "/media/products/watch.webp",
@@ -17,16 +19,9 @@ export const useMockProducts = () => {
       "/media/products/product32.webp",
       "/media/products/product33.webp",
     ];
-    const categories = [
-      "women's wear",
-      "men's wear",
-      "shoes",
-      "bags",
-      "accessories",
-    ];
 
-    const generateRandomProducts = (num: number) => {
-      const data = [];
+    const generateRandomProducts = (num: number): IProduct[] => {
+      const data: IProduct[] = [];
       for (let i = 0; i < num; i++) {
         const productID = `${Math.floor(
           1000 + Math.random() * 9000

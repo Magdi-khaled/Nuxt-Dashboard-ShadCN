@@ -28,7 +28,7 @@ const highlight2 = ref(0);
             </h2>
             <div>
                 <h2 class="pb-2">colors: </h2>
-                <div v-if="product.colors.length" class="w-full sm:w-6/12 flex flex-wrap items-center gap-2">
+                <div v-if="product.colors.length" class="w-full sm:w-9/12 flex flex-wrap items-center gap-2">
                     <div v-for="(item, index) in product.colors" :key="index" @click="highlight1 = index"
                         class="size-8 rounded border border-neutral-900 cursor-pointer" :class="[item,
                             { 'active': highlight1 === index }]" />

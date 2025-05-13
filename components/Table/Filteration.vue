@@ -10,7 +10,7 @@ const isSearching = ref<boolean>(false);
 const triggerSearch = useDebounceFn((value: string) => {
     isSearching.value = false;
     const column = route.name === 'orders' ? props.table.getColumn('orderID') :
-        props.table.getColumn('product');
+        props.table.getColumn('name');
     column?.setFilterValue(value);
 }, 800);
 

@@ -4,7 +4,7 @@ import type IProduct from '~/types/useProduct';
 const route = useRoute();
 const router = useRouter();
 const data = useMockProducts();
-const { categories } = useHelper();
+const { loading, categories } = useHelper();
 
 const colors = ['bg-black', 'bg-cyan-800', 'bg-emerald-800', 'bg-pink-800', 'bg-purple-800'];
 const sizes = ['XL', 'L', 'M', 'SM', 'XS'];
@@ -13,6 +13,11 @@ const product: IProduct = computed(() => data.value.find(v => v.productID === ro
 const editProduct = () => {
     try {
         console.log('product edited');
+        loading.value = true;
+        setTimeout(() => {
+            loading.value = false;
+            router.push(`/products/${product.value.productID}`);
+        }, 2000);
     } catch (e) {
         console.error(e);
     }
@@ -69,8 +74,11 @@ const handleImageChange = (event: Event) => {
                     class="h-[2.625rem] text-sm file:text-xs file:cursor-pointer file:rounded file:border file:border-neutral-400 file:bg-neutral-100 file:p-1 p-[6px]" />
             </div>
             <div class="sm:col-span-3 col-span-1 flex gap-2 justify-end my-2">
-                <Button variant="outline" @click="router.push({ name: 'products' })">Cancel</Button>
-                <Button @click="editProduct">Update</Button>
+                <Button variant="outline" @click="router.push({ name: 'products' })" class="px-4">Cancel</Button>
+                <Button @click="editProduct" :disabled="loading">
+                    <p v-if="!loading" class="px-4">Edit</p>
+                    <Spinner v-else />
+                </Button>
             </div>
             <div class="col-span-1 sm:col-span-3 text-end">
                 <p class="text-neutral-500 font-medium">

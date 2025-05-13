@@ -21,10 +21,10 @@ export const productColumns: IColumn[] = [
     },
   },
   {
-    accessorKey: "product",
+    accessorKey: "name",
     header: () => h("div", { class: "text-left" }, "Product"),
     cell: ({ row }: any) =>
-      h("div", { class: "text-left" }, row.getValue("product")),
+      h("div", { class: "text-left" }, row.getValue("name")),
   },
   {
     accessorKey: "price",

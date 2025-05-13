@@ -1,4 +1,5 @@
-<script setup async>
+<script setup lang="ts" async>
+
 const data = await useMockProducts();
 </script>
 

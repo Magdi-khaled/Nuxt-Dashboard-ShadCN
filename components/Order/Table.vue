@@ -56,7 +56,7 @@ const option = (row: any, type: number) =>
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent side="bottom" align="end">
                                         <DropdownMenuItem @select="option(row.original, 1)">View</DropdownMenuItem>
-                                        <DropdownMenuItem @select="option(row.original, 2)">Edit</DropdownMenuItem>
+                                        <!-- <DropdownMenuItem @select="option(row.original, 2)">Edit</DropdownMenuItem> -->
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                             </div>

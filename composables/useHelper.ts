@@ -44,6 +44,35 @@ export default function useHelper() {
     "bags",
     "accessories",
   ];
+
+  const baseColors: string[] = [
+    "bg-gray-400",
+    "bg-neutral-800",
+    "bg-red-300",
+    "bg-red-600",
+    "bg-red-800",
+    "bg-orange-300",
+    "bg-orange-600",
+    "bg-orange-800",
+    "bg-yellow-300",
+    "bg-yellow-600",
+    "bg-yellow-800",
+    "bg-green-300",
+    "bg-green-600",
+    "bg-green-800",
+    "bg-blue-300",
+    "bg-blue-600",
+    "bg-blue-800",
+    "bg-amber-300",
+    "bg-amber-600",
+    "bg-amber-900",
+    "bg-purple-300",
+    "bg-purple-600",
+    "bg-purple-800",
+  ];
+  const clothSizes: string[] = ["XL", "L", "M", "SM", "XS"];
+  const shoeSizes: string[] = ["39", "40", "41", "42", "43", "44"];
+
   const generateRandomTime = () => {
     const hour = Math.floor(Math.random() * 12) + 1;
     const minutes = Math.floor(Math.random() * 60)
@@ -90,6 +119,9 @@ export default function useHelper() {
     products,
     months,
     categories,
+    baseColors,
+    clothSizes,
+    shoeSizes,
     generateDate,
     generateRandomValue,
     allOrderList,

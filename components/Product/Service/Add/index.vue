@@ -143,7 +143,6 @@ const handleImagesChange = (event: Event) => {
         </Button>
       </div>
     </form>
-    <!-- <ProductServiceAddPreview v-model:thubmnail="preview" :otherImages="otherImages" v-model:title="title" /> -->
     <ProductServiceAddPreview v-model:product="product" />
   </div>
 </template>

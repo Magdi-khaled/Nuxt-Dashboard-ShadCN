@@ -27,7 +27,7 @@ const highlight2 = ref(0);
         <div v-if="!product?.preview" class="cursor-grab w-full h-[18rem] lg:h-[20rem] text-neutral-500
             rounded-lg shadow border-[2px] border-dashed border-neutral-500 flex items-center justify-center">
             <Icon name="hugeicons:image-add-01" size="30" />
-            <p>Product Image</p>
+            Product Image
         </div>
         <img v-else :src="product?.preview"
             class="sm:w-full w-[20rem] h-full sm:h-[20rem] rounded-lg shadow border border-neutral-300 m-auto">

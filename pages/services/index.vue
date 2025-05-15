@@ -58,7 +58,7 @@ onMounted(async () => {
                 </div>
                 <ProductServiceAdd id="add-product" v-else-if="!loading && activeService === items[1]" />
                 <ProductServiceEdit id="edit-product" v-else-if="!loading && activeService === items[2]" />
-                <ProductServiceSearch id="search-about-product" v-else-if="!loading && activeService === items[3]" />
+                <ProductServiceSearch id="find-product" v-else-if="!loading && activeService === items[3]" />
             </transition>
         </main>
     </div>

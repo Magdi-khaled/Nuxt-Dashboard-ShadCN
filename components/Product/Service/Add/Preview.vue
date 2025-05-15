@@ -40,8 +40,8 @@ const highlight2 = ref(0);
                     :class="{ 'border-orange-700 opacity-[1] dark:border-yellow-700': highlightImages === index }">
             </template>
             <template v-else>
-                <div v-for="(item, index) in 4" :key="index" :src="item" :alt="`product-image-${index}`" class="sm:w-[80px] w-full h-[95%] sm:h-[5rem] rounded-lg shadow  border-dashed border-[2px]
-                border-neutral-500 cursor-pointer opacity-[0.8] px-2 flex flex-col items-center justify-center">
+                <div v-for="(item, index) in 4" :key="index" :src="item" :alt="`product-image-${index}`" class="sm:w-[80px] w-full h-[95%] sm:h-[5rem] rounded-lg shadow border-dashed border-[2px]
+                    border-neutral-500 cursor-pointer px-2 flex flex-col items-center justify-center">
                     <Icon name="hugeicons:image-add-01" size="20" />
                     <p class="text-xs text-center">Alternative Image</p>
                 </div>
@@ -50,22 +50,25 @@ const highlight2 = ref(0);
         <!-- --- -->
         <div class="flex flex-col gap-2">
             <h2 class="font-medium text-[20px]">{{ product?.name }}</h2>
-            <h2 v-if="!props.product.price" class="text-neutral-600 border-2 w-full rounded px-1 py-1">Product price
-            </h2>
+            <h2 v-if="!props.product.price"
+                class="text-neutral-600 border-[2px] border-dashed border-neutral-500 w-full rounded-md px-1 py-1">
+                Product price</h2>
             <h2 v-else class="font-medium">
                 <span v-if="price" class="text-xl pr-2">${{ price }}</span>
                 <span v-if="product.sale" class="text-sm text-red-700 px-[3px] py-px rounded-xs bg-red-200">
                     -{{ product?.sale }}%</span>
             </h2>
             <!-- ---- -->
-            <h2 v-if="!product.description" class="text-neutral-600 border-2 w-full rounded px-1 py-1">Product
-                description</h2>
+            <h2 v-if="!product.description"
+                class="text-neutral-600 border-[2px] border-dashed border-neutral-500 w-full rounded-md px-1 py-1">
+                Product description</h2>
             <h3 v-else class="text-neutral-600">{{ product.description }}</h3>
             <!-- ---- -->
             <div>
                 <h2 class="pb-2">colors: </h2>
-                <h2 v-if="!product.colors.length" class="text-neutral-600 border-2 w-full rounded px-1 py-1">Product
-                    colors</h2>
+                <h2 v-if="!product.colors.length"
+                    class="text-neutral-600 border-[2px] border-dashed border-neutral-500 w-full rounded-md px-1 py-1">
+                    Product colors</h2>
                 <div v-else class="w-full flex flex-wrap items-center gap-2">
                     <div v-for="(item, index) in product.colors" :key="index" @click="highlight1 = index"
                         class="size-8 rounded border border-neutral-900 cursor-pointer" :class="[item,
@@ -75,8 +78,9 @@ const highlight2 = ref(0);
             <!-- --- -->
             <div>
                 <h2 class="pb-2">sizes: </h2>
-                <h2 v-if="!product.sizes.length" class="text-neutral-600 border-2 w-full rounded px-1 py-1">Product
-                    size</h2>
+                <h2 v-if="!product.sizes.length"
+                    class="text-neutral-600 border-[2px] border-dashed border-neutral-500 w-full rounded-md px-1 py-1">
+                    Product sizes</h2>
                 <div v-else class="flex items-center gap-2">
                     <div v-for="(item, index) in product.sizes" :key="index" @click="highlight2 = index"
                         class="border px-2 py-[2px] bg-neutral-200 dark:bg-neutral-600 text-orange-700 dark:text-neutral-100 font-semibold cursor-pointer"

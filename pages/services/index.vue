@@ -4,7 +4,7 @@ const route = useRoute();
 const router = useRouter();
 
 const defaultChoice: string = 'choose-service';
-const items = [defaultChoice, 'add-product', 'edit-product', 'find-product'];
+const items = [defaultChoice, 'add-product', 'find-product'];
 const selectedService = ref(defaultChoice);
 const activeService = ref(defaultChoice);
 
@@ -29,12 +29,9 @@ onMounted(async () => {
         localStorage.setItem('selectedService', defaultChoice);
         return
     };
-    loading.value = true;
     const localStValue = localStorage.getItem('selectedService');
     activeService.value = localStValue as string;
     selectedService.value = localStValue as string;
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    loading.value = false;
 });
 </script>
 
@@ -57,8 +54,7 @@ onMounted(async () => {
                     </div>
                 </div>
                 <ProductServiceAdd id="add-product" v-else-if="!loading && activeService === items[1]" />
-                <ProductServiceEdit id="edit-product" v-else-if="!loading && activeService === items[2]" />
-                <ProductServiceSearch id="find-product" v-else-if="!loading && activeService === items[3]" />
+                <ProductServiceFind id="find-product" v-else-if="!loading && activeService === items[2]" />
             </transition>
         </main>
     </div>

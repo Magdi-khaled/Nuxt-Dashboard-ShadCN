@@ -9,7 +9,7 @@ const { loading, categories, baseColors, clothSizes, shoeSizes } = useHelper();
 const product: IProduct = computed(() => data.value.find(v => v.productID === route.params.id));
 
 watch(() => product.value.category, (newVal) => {
-    if (product.category === 'shoes' && newVal !== 'shoes')
+    if (product.value.category === 'shoes' && newVal !== 'shoes')
         product.value.sizes = []
     else product.value.sizes = []
 });
@@ -43,7 +43,6 @@ const handleImagesChange = (event: Event) => {
         product.value.otherImages = selectedFiles.map(file => URL.createObjectURL(file));
     }
 };
-
 </script>
 
 <template>
@@ -76,7 +75,7 @@ const handleImagesChange = (event: Event) => {
                     place-holder="Select Category..." />
             </div>
             <div>
-                <label for="productColors">sizes</label>
+                <label for="productColors">Sizes</label>
                 <CustomSelect v-if="product.category === 'shoes'" v-model:selectedItem="product.sizes" multiple
                     :category="product.category" :items="shoeSizes" place-holder="Select sizes..." />
                 <CustomSelect v-else v-model:selectedItem="product.sizes" :items="clothSizes" multiple

@@ -6,6 +6,7 @@ const props = defineProps<{
     placeHolder: string
     isColors?: boolean
     category?: string
+    isServices?: boolean
 }>();
 
 watch(selectedItem, (currentSelection) => {
@@ -25,7 +26,8 @@ const colorName = (col: string): string => {
     if (colArr[2] <= '600' && colArr[2] > '300') return newColor;
     else if (colArr[2] <= '900' && colArr[2] > '600') return 'Dark ' + newColor;
     return 'low ' + newColor;
-}
+};
+const customizedText = (item: string) => item.split('-')[0] + ' ' + item.split('-')[1]; 
 </script>
 
 <template>
@@ -36,7 +38,9 @@ const colorName = (col: string): string => {
         <SelectContent>
             <SelectGroup>
                 <SelectItem v-for="item, index in props.items" :key="index" :value="item">
-                    <span v-if="!isColors" class="capitalize"> {{ item }}</span>
+                    <span v-if="!isColors && !isServices" class="capitalize"> {{ item }}</span>
+                    <span v-else-if="isServices" class="capitalize">
+                        {{ customizedText(item) }}</span>
                     <div v-else class="flex flex-wrap items-center gap-2">
                         <span class="w-8 h-4  rounded-xs border border-neutral-900 cursor-pointer" :class="item" />
                         <p class="capitalize">{{ colorName(item) }}</p>

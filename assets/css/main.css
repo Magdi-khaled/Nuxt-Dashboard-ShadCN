@@ -1,0 +1,24 @@
+.active {
+  position: relative;
+}
+.active::after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 24%;
+  width: 4px;
+  height: 8px;
+  border-radius: 20%;
+  background-color: white;
+}
+.active::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 46%;
+  width: 4px;
+  height: 20px;
+  transform: rotate(50deg);
+  border-radius: 25%;
+  background-color: white;
+}/*# sourceMappingURL=main.css.map */

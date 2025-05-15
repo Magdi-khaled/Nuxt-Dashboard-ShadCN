@@ -4,6 +4,6 @@
 
 <template>
     <div>
-        hello from addproduct component
+        hello from Search
     </div>
 </template>

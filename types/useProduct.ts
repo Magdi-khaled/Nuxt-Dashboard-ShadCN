@@ -4,9 +4,9 @@ export default interface IProduct {
   otherImages: string[];
   name: string;
   description: string;
-  price: number;
-  sale?: number;
-  quantity: number;
+  price: number | null;
+  sale?: number | null;
+  quantity: number | null;
   category: string;
   colors: string[];
   sizes: string[];

@@ -25,6 +25,10 @@ watch(selectedService, async (newService) => {
 });
 
 onMounted(async () => {
+    if (localStorage.getItem('selectedService') === null) {
+        localStorage.setItem('selectedService', defaultChoice);
+        return
+    };
     loading.value = true;
     const localStValue = localStorage.getItem('selectedService');
     activeService.value = localStValue as string;

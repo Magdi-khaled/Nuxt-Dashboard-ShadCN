@@ -17,7 +17,7 @@ watch(selectedService, async (newService) => {
         return
     }
     loading.value = true;
-    // await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1200));
     loading.value = false;
     activeService.value = newService;
     localStorage.setItem('selectedService', activeService.value)

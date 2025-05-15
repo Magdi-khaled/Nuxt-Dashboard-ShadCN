@@ -49,7 +49,7 @@ const highlight2 = ref(0);
         </div>
         <!-- --- -->
         <div class="flex flex-col gap-2">
-            <h1 class="font-medium">{{ product?.name }}</h1>
+            <h2 class="font-medium text-[20px]">{{ product?.name }}</h2>
             <h2 v-if="!props.product.price" class="text-neutral-600 border-2 w-full rounded px-1 py-1">Product price
             </h2>
             <h2 v-else class="font-medium">

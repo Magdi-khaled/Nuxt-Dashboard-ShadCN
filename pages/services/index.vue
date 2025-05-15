@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { loading } = useHelper();
-const route = useRoute();
 const router = useRouter();
 
 const defaultChoice: string = 'choose-service';

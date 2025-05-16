@@ -65,8 +65,7 @@ const withdraw = async () => {
                 <div class="w-full flex justify-end mt-4">
                     <Button @click="!hideChangeInfo && saveInfo()" class="w-5/12 sm:w-2/12 py-[8px] text-sm sm:text-md"
                         :disabled="!hideChangeInfo">
-                        Save
-                    </Button>
+                        Save </Button>
                 </div>
             </form>
         </div>
@@ -96,24 +95,20 @@ const withdraw = async () => {
             </div>
         </div>
         <div class="bg-background p-4 shadow-sm border rounded-lg">
-            <div class="flex items-center justify-between">
-                <h1 class="text-lg font-semibold capitalize">
-                    <span class="px-2 py-1 border rounded-md bg-neutral-900 dark:bg-neutral-50 text-background">{{
-                        businessInfo.name }}</span>
-                </h1>
-                <Button @click="withdraw" class="uppercase">
-                    <p v-if="!loading" class="flex items-center gap-1">
-                        Withdraw Your Money
-                        <Icon name="game-icons:take-my-money" size="25" />
-                    </p>
-                    <Spinner v-else class="px-8" />
-                </Button>
-            </div>
-            <div class="grid grid-cols-1 mt-2">
+            <div class="flex flex-wrap items-center justify-between gap-2">
                 <p class="font-semibold capitalize text-lg text-neutral-700 dark:text-neutral-50">wallet (.Net Revenue):
-                    <span class="text-neutral-800 dark:text-neutral-200 text-xl font-bold">
+                    <span class="text-neutral-800 dark:text-neutral-200 text-2xl font-semibold">
                         ${{ businessInfo.balance }}</span>
                 </p>
+                <div class="sm:w-fit w-full flex justify-end">
+                    <Button @click="withdraw" class="uppercase">
+                        <p v-if="!loading" class="flex items-center gap-1">
+                            Withdraw Your Money
+                            <Icon name="game-icons:take-my-money" size="25" />
+                        </p>
+                        <Spinner v-else class="px-8" />
+                    </Button>
+                </div>
             </div>
             <hr class="my-4">
             <div>

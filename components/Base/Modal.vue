@@ -10,10 +10,10 @@ const closeModal = () => {
 <template>
     <Teleport to='body'>
         <Transition name="modal-outer">
-            <div v-show="modalActive" class="fixed inset-0 flex items-center justify-center bg-[#00000065] z-50"
+            <div v-show="modalActive" class="fixed inset-0 flex items-center justify-center bg-[#0000008a] z-50"
                 @click="closeModal">
                 <Transition class="modal-inner">
-                    <div v-if="modalActive" class="base-modal p-1 bg-white border-2 border-gray-300 rounded relative"
+                    <div v-if="modalActive" class="base-modal p-1 bg-background border rounded-lg shadow-sm relative"
                         @click.stop>
                         <slot />
                     </div>

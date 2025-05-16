@@ -59,10 +59,10 @@ const clearForm = () => {
                             miss match password *</p>
                     </div>
                     <div class="flex items-center gap-2 justify-end mt-4">
-                        <Button variant="ghost" @click="updatePassword">
+                        <Button variant="ghost" @click="modalActive = false">
                             Cancel </Button>
                         <Button @click="updatePassword" :disabled="hideChangePassword">
-                            <p v-if="!loading">save</p>
+                            <p v-if="!loading" class="px-2">Save</p>
                             <Spinner v-else />
                         </Button>
                     </div>

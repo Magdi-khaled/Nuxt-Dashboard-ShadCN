@@ -45,7 +45,7 @@ const clearForm = () => {
                             v-model="currentPassword" class="p-2 my-1 border-2 rounded-sm" />
                         <p v-if="currentPassword != '1234' && submitted" class="text-red-600 font-medium text-sm">
                             current password incorrect *</p>
-                    </div>*
+                    </div>
                     <div class="flex flex-col capitalize">
                         <label for="newPassword" class="font-medium">New Password</label>
                         <Input type="password" id="newPassword" placeholder="New password" autocomplete="off"

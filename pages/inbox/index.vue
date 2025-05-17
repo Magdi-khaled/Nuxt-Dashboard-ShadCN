@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useDebounceFn } from '@vueuse/core';
+const { loading } = useHelper();
 const searchMessage = ref('');
 const checkedItems = ref<number[]>([]);
 const openItems = ref<number[]>([]);
@@ -42,6 +44,15 @@ const toggleOpen = (id: number) => {
     openItems.value.push(id);
   }
 }
+const filteredItems = ref<{ id: number, title: string, message: string, date: string }[]>(inbox.value);
+
+const searchItems = useDebounceFn(() => {
+  loading.value = false;
+  if (!searchMessage.value.trim()) filteredItems.value = inbox.value;
+  filteredItems.value = inbox.value.filter(item =>
+    item.title.toLowerCase().includes(searchMessage.value.toLowerCase())
+  );
+}, 800);
 </script>
 
 <template>
@@ -49,10 +60,11 @@ const toggleOpen = (id: number) => {
     <header class="flex flex-wrap justify-between items-end gap-2 border-b pb-2">
       <label for="messageSearch" class="relative w-full sm:w-5/12">
         <Input id="messageSearch" type="text" placeholder="Search about Message..." class="w-full pl-9 text-sm"
-          v-model="searchMessage" @Input="" />
-        <!-- class="w-full sm:w-4/12 pl-9 text-sm" v-model="searchMessage" @Input="" /> -->
-        <Icon name="tabler:message-search" class="absolute top-[19%] left-2 text-neutral-700 dark:text-neutral-100"
-          size="22" />
+          v-model="searchMessage" @input="loading = true, searchItems()" />
+        <Icon v-if="!loading" name="tabler:message-search"
+          class="absolute top-[19%] left-2 text-neutral-700 dark:text-neutral-100" size="22" />
+        <Icon v-else name="eos-icons:bubble-loading"
+          class="absolute top-[19%] left-2 text-neutral-700 dark:text-neutral-100" size="22" />
       </label>
       <div class="sm:w-fit w-full flex justify-end">
         <p class="text-neutral-600 dark:text-neutral-200">All Inbox({{ inbox.length }})</p>
@@ -60,7 +72,7 @@ const toggleOpen = (id: number) => {
     </header>
     <!-- --- -->
     <main class="w-full grid items-center my-2">
-      <div v-for="(item, index) in inbox" :key="item.id" class="px-2 py-3 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800
+      <div v-for="(item, index) in filteredItems" :key="item.id" class="px-2 py-3 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800
         hover:shadow-xl hover:outline hover:outline-neutral-300 transition-all duration-150 "
         @click="toggleOpen(item.id)" :class="{ 'border-b': openItems.includes(item.id) }">
 

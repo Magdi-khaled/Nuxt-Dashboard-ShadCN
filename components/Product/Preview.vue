@@ -13,11 +13,11 @@ const highlight2 = ref(0);
     <div class="flex flex-wrap sm:flex-nowrap items-start gap-5">
         <div class="grid grid-cols-4 sm:grid-cols-1 gap-2 order-1 sm:order-0">
             <img v-for="(item, index) in product.otherImages" :key="index" :src="item" alt="product-image"
-                @click="product.preview = item, highlightImages = index"
+                @click="product.preview = item, highlightImages = index" loading="lazy"
                 class="sm:w-[80px] w-full h-[95%] sm:h-[5rem] rounded-lg shadow border-[2px] border-neutral-300 cursor-pointer opacity-[0.8]"
                 :class="{ 'border-orange-700 opacity-[1] dark:border-yellow-700': highlightImages === index }">
         </div>
-        <img :src="product?.preview" alt="product-image"
+        <img :src="product?.preview" alt="product-image" loading="lazy"
             class="order-0 sm:order-1 sm:w-[17rem] w-[20rem] sm:h-full h-[20rem] rounded-lg shadow border border-neutral-300 sm:m-0 m-auto"></img>
         <div class="order-2 flex flex-col gap-2">
             <h1 class="font-medium">{{ product?.name }}</h1>

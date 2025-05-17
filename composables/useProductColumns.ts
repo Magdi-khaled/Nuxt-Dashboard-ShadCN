@@ -16,7 +16,8 @@ export const productColumns: IColumn[] = [
       return h("img", {
         src: imageUrl,
         class: "w-[70px] h-[65px] rounded",
-        alt: "Preview Image",
+        alt: "Product Image",
+        loading: "lazy",
       });
     },
   },

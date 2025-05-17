@@ -37,7 +37,7 @@ export default defineNuxtConfig({
       loader: "ts",
     },
   },
-  modules: ["shadcn-nuxt", "@nuxt/icon", "@nuxtjs/color-mode"],
+  modules: ["shadcn-nuxt", "@nuxt/icon", "@nuxtjs/color-mode", "@pinia/nuxt"],
   colorMode: { classSuffix: "" },
   shadcn: {
     /**

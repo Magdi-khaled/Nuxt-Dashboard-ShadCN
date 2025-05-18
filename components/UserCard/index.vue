@@ -2,14 +2,12 @@
 const name = ref('Magdi Khaled');
 const email = ref('magdikhaled23s@gmail.com');
 const isUserImage = ref(true);
-const show = ref(false);
 </script>
 
 <template>
     <div class="relative">
         <div class="w-full flex items-center gap-2 cursor-pointer">
-            <div
-                class="flex items-center justify-between font-bold hover:opacity-[0.85] transition">
+            <div class="flex items-center justify-between font-bold hover:opacity-[0.85] transition">
                 <span v-if="isUserImage" class="border rounded-full px-[15px] py-2 bg-white dark:text-background">
                     {{ name[0] }}
                 </span>

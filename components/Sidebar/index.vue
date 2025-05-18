@@ -1,8 +1,9 @@
 <script setup>
+const route = useRoute();
 const { open } = useHelper();
 </script>
 <template>
-    <div class=" lg:sticky top-0">
+    <div class="lg:sticky top-0">
         <div
             class="z-50 fixed bottom-0 shadow-top bg-background dark:bg-neutral-800 h-fit flex items-center justify-between w-full px-2 py-2 lg:hidden">
             <Logo />
@@ -20,6 +21,8 @@ const { open } = useHelper();
         </div>
         <div class="relative w-[250px] h-[100dvh] hidden lg:flex flex-col justify-between border-r">
             <SidebarMenu />
+
+            <UserCard v-if="route.name !== 'index'" class="p-4" />
         </div>
     </div>
 </template>
